@@ -5,8 +5,10 @@ description = "Final practical data project"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "beautifulsoup4>=4.14.3",
     "catboost>=1.2.10",
     "lightgbm>=4.6.0",
+    "lxml>=6.0.2",
     "matplotlib>=3.10.8",
     "numpy>=2.4.3",
     "pandas>=3.0.1",
