@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "catboost>=1.2.10",
+    "ipykernel>=7.2.0",
     "lightgbm>=4.6.0",
     "lxml>=6.0.2",
     "matplotlib>=3.10.8",
