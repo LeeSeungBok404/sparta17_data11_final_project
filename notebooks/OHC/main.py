@@ -76,8 +76,8 @@ GOOGLE_PASSWORD = "Mnc-711!"
 SESSION_FILE = BASE_DIR / "session.json"   # 로그인 세션 저장 파일
 
 # --- 랭킹 수집 범위 ---
-START_PAGE = 55                    # 수집 시작 페이지 (조별 분담)
-END_PAGE = 56                      # 수집 종료 페이지
+START_PAGE = 121                    # 수집 시작 페이지 (조별 분담)
+END_PAGE = 122                      # 수집 종료 페이지
 
 # --- 통계 다운로드 기간 (UTC, URL 인코딩) ---
 # 한국시간 2025-01-01 00:00:00 ~ 2026-03-31 23:59:59
