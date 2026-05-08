@@ -5,7 +5,7 @@
 [실행 방법]
 1.본인 이니셜 폴더로 data 하위 폴더를 만들고 그 아래에 input, logs, processed, raw 폴더를 만든다
 2.main.py를 본인 이니셜 폴더로 복사한 뒤 bash에 아래 명령어를 친다(본인 이니셜로 rename)
-uv run python notebooks/OHC/main.py all
+uv run python notebooks/MDH/main.py all
 3.PROFIT!
 
 [실행 흐름]
@@ -68,7 +68,7 @@ for d in [INPUT_DIR, RAW_DIR, LOG_DIR]:
 # 설정값 (필요에 따라 수정)
 # ============================================================
 
-MEMBER_TAG = "OHC"                 # 조원 태그 (파일명에 사용)
+MEMBER_TAG = "MDH"                 # 조원 태그 (파일명에 사용)
 
 # --- Google 로그인 계정 ---
 GOOGLE_EMAIL = "sibchiljo9@gmail.com"
@@ -76,8 +76,8 @@ GOOGLE_PASSWORD = "Mnc-711!"
 SESSION_FILE = BASE_DIR / "session.json"   # 로그인 세션 저장 파일
 
 # --- 랭킹 수집 범위 ---
-START_PAGE = 121                    # 수집 시작 페이지 (조별 분담)
-END_PAGE = 122                      # 수집 종료 페이지
+START_PAGE = 106                    # 수집 시작 페이지 (조별 분담)
+END_PAGE = 120                      # 수집 종료 페이지
 
 # --- 통계 다운로드 기간 (UTC, URL 인코딩) ---
 # 한국시간 2025-01-01 00:00:00 ~ 2026-03-31 23:59:59
