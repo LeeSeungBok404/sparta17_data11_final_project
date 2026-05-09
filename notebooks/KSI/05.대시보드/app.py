@@ -43,71 +43,113 @@ STARTRAIL_SEGMENTS = [
         "num": "01",
         "ko": "성단",
         "en": "Star Cluster",
-        "purpose": "팬덤 단위 이동이 가능한 집단형 후보 발굴",
-        "criteria": "그룹/아이돌성, 팬덤 결집, 멤버 단위 이동 가능성",
-        "point": "팬덤 단위 유입으로 CIME의 초기 트래픽을 확보합니다.",
+        "icon": "⭐",
+        "icon_class": "icon-cluster",
+        "purpose": '팬덤이 함께 이동할 가능성이 높은<br><span class="purpose-key">그룹형 후보군</span>',
+        "criteria": "그룹/소속성, 팬덤 결집, 멤버 단위 이동 가능성",
+        "point": "여러 스트리머와 팬덤을 함께 유입시켜 초기 트래픽을 빠르게 확보합니다.",
     },
     {
         "num": "02",
         "ko": "프로토스타",
         "en": "Protostar",
-        "purpose": "외부 규모는 작지만 방송 반응이 좋은 성장형 후보 발굴",
+        "icon": "🌱",
+        "icon_class": "icon-protostar",
+        "purpose": '현재 규모는 작지만 방송 반응이 좋은<br><span class="purpose-key">성장형 후보군</span>',
         "criteria": "시청자 반응, 채팅, 뷰어십, 팔로워 대비 성과",
-        "point": "성장 가능성이 높은 원석을 육성 타깃으로 확보합니다.",
+        "point": "성장 가능성이 높은 후보를 조기에 발굴해 CIME의 육성 타깃으로 활용합니다.",
     },
     {
         "num": "03",
         "ko": "위성",
         "en": "Satellite",
-        "purpose": "후원·채팅·시청자 반응이 검증된 개인 후보 발굴",
-        "criteria": "도네이션, 채팅화력, 평균 시청자, 솔로 여부",
-        "point": "검증된 개인 화력으로 수익화와 방송 활력을 만듭니다.",
+        "icon": "🛰️",
+        "icon_class": "icon-satellite",
+        "purpose": '소속 없이도 방송 성과가 검증된<br><span class="purpose-key">개인형 후보군</span>',
+        "criteria": "도네이션, 채팅화력, 평균 시청자, 개인 활동 여부",
+        "point": "검증된 개인 방송 화력을 바탕으로 안정적인 콘텐츠와 수익성을 확보합니다.",
     },
     {
         "num": "04",
         "ko": "슈퍼노바",
         "en": "Supernova",
-        "purpose": "대중성과 팬덤 체급이 큰 간판형 후보 발굴",
+        "icon": "💥",
+        "icon_class": "icon-supernova",
+        "purpose": '대중성과 팬덤 규모가 큰<br><span class="purpose-key">간판형 후보군</span>',
         "criteria": "팔로워, 최고 시청자, 유튜브 구독자, 팬덤지수, 방송화력",
-        "point": "간판 스트리머로 인지도와 트래픽을 빠르게 끌어올립니다.",
+        "point": "인지도 높은 스트리머를 통해 플랫폼 주목도와 외부 유입을 높입니다.",
     },
     {
         "num": "05",
         "ko": "코멧",
         "en": "Comet",
-        "purpose": "외부 채널 기반 신규 유입 후보 발굴",
+        "icon": "☄️",
+        "icon_class": "icon-comet",
+        "purpose": '방송 외 다른곳에서 인지도가 높은<br><span class="purpose-key">발견형 후보군</span>',
         "criteria": "유튜브 구독자, X 팔로워, 유튜브/X 유입지수, 플랫폼 대비 외부 체급",
-        "point": "외부 채널 기반으로 신규 유저층을 CIME로 유입시킵니다.",
+        "point": "외부 팬덤을 CIME으로 연결해 새로운 이용자 유입을 만듭니다.",
     },
 ]
 
-STARSEED_STEPS = [
+TRAIL_ICON_HTML = """
+<div class="trail-spark-icon">
+    <div class="trail-line trail-line-1"></div>
+    <div class="trail-line trail-line-2"></div>
+    <div class="trail-line trail-line-3"></div>
+    <div class="trail-star trail-star-main">✦</div>
+    <div class="trail-star trail-star-small">✦</div>
+    <div class="trail-star trail-star-tiny">✦</div>
+    <div class="trail-dot trail-dot-1"></div>
+    <div class="trail-dot trail-dot-2"></div>
+</div>
+"""
+
+SEED_ICON_HTML = """
+<div class="seed-search-icon">
+    <div class="seed-lens"></div>
+    <div class="seed-handle"></div>
+    <div class="seed-star-core">✦</div>
+    <div class="seed-sparkle-1">✦</div>
+    <div class="seed-sparkle-2">✦</div>
+    <div class="seed-dot-1"></div>
+    <div class="seed-dot-2"></div>
+</div>
+"""
+
+
+STAR_SEED_CARDS = [
     {
         "num": "01",
-        "title": "유튜브 기반 후보 발굴",
-        "desc": "YouTube Data API를 활용해 CIME의 타깃 세그먼트와 맞는 채널과 영상을 수집합니다.",
+        "icon": "search",
+        "title": "후보 수집 기준",
+        "desc": "유튜브 활동 채널 중<br>영입 검토 가능한 후보를 모읍니다.",
     },
     {
         "num": "02",
-        "title": "팬덤 반응 분석",
-        "desc": "조회수 대비 좋아요·댓글 반응을 확인하여 단순 노출이 아닌 팬덤 밀도를 판단합니다.",
+        "icon": "chat",
+        "title": "팬 반응 밀도",
+        "desc": "조회수 대비 좋아요·댓글로<br>팬덤 반응 강도를 봅니다.",
     },
     {
         "num": "03",
-        "title": "라이브 전환 가능성 검토",
-        "desc": "게임, 노래, ASMR, 토크 등 실시간 방송으로 확장 가능한 콘텐츠인지 확인합니다.",
+        "icon": "live",
+        "title": "라이브 전환성",
+        "desc": "콘텐츠 유형과 라이브 신호로<br>방송 전환 가능성을 봅니다.",
     },
     {
         "num": "04",
-        "title": "영입 실전성 검증",
-        "desc": "방송사, 기관, 팬클립, 아카이브, 리믹스 채널 등 실제 영입 대상이 아닌 채널을 제외합니다.",
+        "icon": "filter",
+        "title": "실전 리스크",
+        "desc": "기관·방송사·팬클립 등<br>영입 제외 대상을 구분합니다.",
     },
     {
         "num": "05",
-        "title": "Shortlist 생성",
-        "desc": "최종점수, 액션버킷, 리스크 플래그를 함께 확인해 사람이 검토할 후보 리스트로 정리합니다.",
+        "icon": "check",
+        "title": "액션버킷",
+        "desc": "점수와 리스크를 함께 보고<br>검토 우선순위를 나눕니다.",
     },
 ]
+
 
 
 def clean_html(markup: str) -> str:
@@ -498,7 +540,124 @@ st.markdown(
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
+
+        .trail-spark-icon {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            color: #FFD45D;
+        }
+
+        .trail-line {
+            position: absolute;
+            left: 5px;
+            height: 3px;
+            border-radius: 999px;
+            background: currentColor;
+            box-shadow: 0 0 8px rgba(255,212,93,0.28);
+        }
+
+        .trail-line-1 { top: 22px; width: 23px; opacity: 0.95; }
+        .trail-line-2 { top: 31px; width: 16px; opacity: 0.72; }
+        .trail-line-3 { top: 27px; left: 13px; width: 18px; opacity: 0.48; }
+
+        .trail-star {
+            position: absolute;
+            color: currentColor;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(255,212,93,0.40);
+        }
+
+        .trail-star-main { left: 30px; top: 15px; font-size: 30px; }
+        .trail-star-small { left: 23px; top: 6px; font-size: 14px; opacity: 0.95; }
+        .trail-star-tiny { left: 17px; top: 38px; font-size: 10px; opacity: 0.85; }
+
+        .trail-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 6px rgba(255,212,93,0.35);
+        }
+
+        .trail-dot-1 { left: 44px; top: 11px; }
+        .trail-dot-2 { left: 8px; top: 40px; opacity: 0.75; }
+
+        .seed-search-icon {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            color: #98FFAB;
+        }
+
+        .seed-lens {
+            position: absolute;
+            left: 7px;
+            top: 7px;
+            width: 30px;
+            height: 30px;
+            border: 4px solid currentColor;
+            border-radius: 50%;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(152,255,171,0.20);
+        }
+
+        .seed-handle {
+            position: absolute;
+            left: 33px;
+            top: 35px;
+            width: 18px;
+            height: 4px;
+            background: currentColor;
+            border-radius: 999px;
+            transform: rotate(45deg);
+            transform-origin: left center;
+            box-shadow: 0 0 8px rgba(152,255,171,0.20);
+        }
+
+        .seed-star-core {
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            font-size: 18px;
+            line-height: 1;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(152,255,171,0.48);
+        }
+
+        .seed-sparkle-1 {
+            position: absolute;
+            left: 37px;
+            top: 7px;
+            font-size: 12px;
+            line-height: 1;
+            opacity: 0.95;
+        }
+
+        .seed-sparkle-2 {
+            position: absolute;
+            left: 4px;
+            top: 35px;
+            font-size: 9px;
+            line-height: 1;
+            opacity: 0.78;
+        }
+
+        .seed-dot-1,
+        .seed-dot-2 {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 6px rgba(152,255,171,0.35);
+        }
+
+        .seed-dot-1 { left: 44px; top: 18px; }
+        .seed-dot-2 { left: 11px; top: 43px; opacity: 0.8; }
 
         .trail-icon-box {
             background: rgba(255,212,93,0.12);
@@ -627,6 +786,26 @@ st.markdown(
             font-weight: 560;
         }
 
+        .trail-point {
+            color: #FFD45D;
+            font-weight: 850;
+        }
+
+        .trail-soft-point {
+            color: #F6D365;
+            font-weight: 700;
+        }
+
+        .seed-point {
+            color: #98FFAB;
+            font-weight: 700;
+        }
+
+        .seed-soft-point {
+            color: #98FFAB;
+            font-weight: 750;
+        }
+
         section.main .stButton > button {
             width: 100%;
             height: 44px;
@@ -672,6 +851,59 @@ st.markdown(
             to { opacity: 1; transform: translateY(0); }
         }
 
+
+        .detail-phase-head {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .detail-phase-icon {
+            width: 54px;
+            height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            overflow: visible;
+        }
+
+        .detail-phase-icon .trail-spark-icon,
+        .detail-phase-icon .seed-search-icon {
+            transform: scale(0.92);
+            transform-origin: center center;
+        }
+
+        .detail-phase-title-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            line-height: 1.05;
+        }
+
+        .detail-phase-ko {
+            font-size: 34px;
+            font-weight: 950;
+            letter-spacing: -1.1px;
+        }
+
+        .detail-phase-en {
+            font-size: 22px;
+            font-weight: 850;
+            color: rgba(255,255,255,0.90);
+            letter-spacing: -0.2px;
+        }
+
+        .detail-phase-trail .detail-phase-ko {
+            color: #FFD45D;
+            text-shadow: 0 0 14px rgba(255,212,93,0.22);
+        }
+
+        .detail-phase-seed .detail-phase-ko {
+            color: #98FFAB;
+            text-shadow: 0 0 14px rgba(152,255,171,0.20);
+        }
         .detail-kicker {
             font-size: 14px;
             font-weight: 950;
@@ -692,8 +924,11 @@ st.markdown(
             font-size: 19px;
             line-height: 1.9;
             color: #D9CFE8;
-            font-weight: 560;
+            font-weight: 520;
             margin-bottom: 34px;
+            word-break: keep-all;
+            overflow-wrap: normal;
+            letter-spacing: -0.02em;
         }
 
         .segment-grid,
@@ -711,8 +946,7 @@ st.markdown(
             grid-template-columns: repeat(5, minmax(0, 1fr));
         }
 
-        .segment-card,
-        .seed-step-card {
+        .segment-card {
             border-radius: 17px;
             padding: 24px 20px;
             background: rgba(255,255,255,0.038);
@@ -720,8 +954,114 @@ st.markdown(
             min-height: 250px;
         }
 
-        .segment-num,
-        .seed-num {
+        .seed-step-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            padding: 28px 20px 26px;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(152,255,171,0.085), transparent 42%),
+                rgba(255,255,255,0.038);
+            border: 1px solid rgba(152,255,171,0.18);
+            min-height: 258px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow:
+                inset 0 0 24px rgba(152,255,171,0.035),
+                0 14px 36px rgba(0,0,0,0.18);
+            transition: all 0.22s ease;
+        }
+
+        .seed-step-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(152,255,171,0.42);
+            box-shadow:
+                inset 0 0 28px rgba(152,255,171,0.06),
+                0 18px 46px rgba(0,0,0,0.30),
+                0 0 22px rgba(152,255,171,0.08);
+        }
+
+        .seed-step-card::before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            right: 24px;
+            top: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(152,255,171,0.55), transparent);
+        }
+
+        .segment-card {
+            position: relative;
+            overflow: hidden;
+            padding: 30px 20px 26px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .segment-head {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            min-height: 132px;
+            margin-bottom: 8px;
+        }
+
+        .segment-icon-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            font-size: 27px;
+            line-height: 1;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 0 18px rgba(240, 140, 255, 0.12);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .icon-cluster {
+            color: #FFD45D;
+            background: rgba(255, 212, 93, 0.10);
+            border-color: rgba(255, 212, 93, 0.25);
+        }
+
+        .icon-protostar {
+            color: #98FFAB;
+            background: rgba(152, 255, 171, 0.10);
+            border-color: rgba(152, 255, 171, 0.25);
+        }
+
+        .icon-satellite {
+            color: #8FB8FF;
+            background: rgba(143, 184, 255, 0.10);
+            border-color: rgba(143, 184, 255, 0.25);
+        }
+
+        .icon-supernova {
+            color: #FF7AC8;
+            background: rgba(255, 122, 200, 0.10);
+            border-color: rgba(255, 122, 200, 0.25);
+        }
+
+        .icon-comet {
+            color: #FF9E5E;
+            background: rgba(255, 158, 94, 0.10);
+            border-color: rgba(255, 158, 94, 0.25);
+        }
+
+        .segment-card:hover .segment-icon-badge {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 0 24px rgba(240, 140, 255, 0.24);
+        }
+
+        .segment-num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -731,19 +1071,142 @@ st.markdown(
             border-radius: 999px;
             font-size: 12px;
             font-weight: 950;
-            margin-bottom: 22px;
-        }
-
-        .segment-num {
+            margin-bottom: 14px;
             color: #F7C2FF;
             background: rgba(240, 140, 255, 0.18);
             border: 1px solid rgba(240, 140, 255, 0.30);
         }
 
-        .seed-num {
-            color: #A8FFB7;
-            background: rgba(152, 255, 171, 0.13);
-            border: 1px solid rgba(152, 255, 171, 0.28);
+        .seed-icon-orbit {
+            width: 82px;
+            height: 82px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            background:
+                radial-gradient(circle, rgba(152,255,171,0.18) 0%, rgba(152,255,171,0.06) 58%, transparent 72%);
+            border: 1px solid rgba(152,255,171,0.28);
+            box-shadow:
+                0 0 24px rgba(152,255,171,0.08),
+                inset 0 0 18px rgba(152,255,171,0.04);
+        }
+
+        .seed-icon-badge {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            transform: scale(1.08);
+            transform-origin: center center;
+        }
+
+        .seed-icon-badge::before,
+        .seed-icon-badge::after {
+            content: "";
+            position: absolute;
+            box-sizing: border-box;
+            filter: drop-shadow(0 0 6px rgba(152,255,171,0.18));
+        }
+
+        /* 01 검색 */
+        .seed-icon-search::before {
+            width: 28px;
+            height: 28px;
+            border: 3.4px solid #98FFAB;
+            border-radius: 50%;
+            left: 10px;
+            top: 9px;
+        }
+
+        .seed-icon-search::after {
+            width: 20px;
+            height: 3.4px;
+            background: #98FFAB;
+            border-radius: 999px;
+            left: 33px;
+            top: 35px;
+            transform: rotate(45deg);
+        }
+
+
+/* 02 팬 반응 밀도 */
+        .seed-icon-chat::before {
+            width: 58px;
+            height: 58px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20stroke%3D%22%2398FFAB%22%20stroke-width%3D%222.9%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2012.5h24a3%203%200%200%201%203%203v12a3%203%200%200%201-3%203H22l-7%205v-5h-3a3%203%200%200%201-3-3v-12a3%203%200%200%201%203-3Z%22%2F%3E%3Cpath%20d%3D%22M24%2025.8s-4.8-2.7-4.8-5.9c0-1.6%201.3-2.9%202.9-2.9%201.2%200%202%20.7%202.6%201.6.6-.9%201.4-1.6%202.6-1.6%201.6%200%202.9%201.3%202.9%202.9%200%203.2-4.8%205.9-4.8%205.9Z%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+            border: none;
+        }
+
+        .seed-icon-chat::after {
+            display: none;
+        }
+
+        /* 03 라이브 전환성 */
+        .seed-icon-live::before {
+            width: 56px;
+            height: 56px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20stroke%3D%22%2398FFAB%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%2214%22%20y%3D%2216%22%20width%3D%2216%22%20height%3D%2212%22%20rx%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M30%2019l5-3v12l-5-3%22%2F%3E%3Cpath%20d%3D%22M10%2018c2-4.5%206.4-7.5%2011.4-7.8%22%2F%3E%3Cpath%20d%3D%22M18.2%207.6l3.9%202.2-3.7%202.4%22%2F%3E%3Cpath%20d%3D%22M38%2030c-2%204.5-6.4%207.5-11.4%207.8%22%2F%3E%3Cpath%20d%3D%22M29.8%2040.4l-3.9-2.2%203.7-2.4%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+            border: none;
+        }
+
+        .seed-icon-live::after {
+            display: none;
+        }
+
+        /* 04 실전 리스크 */
+        .seed-icon-filter::before {
+            width: 44px;
+            height: 44px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%20fill%3D%22none%22%20stroke%3D%22%2398FFAB%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2211.5%22%2F%3E%3Cpath%20d%3D%22M17.5%2024h13%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+            border: none;
+        }
+
+        .seed-icon-filter::after {
+            display: none;
+        }
+
+        /* 05 체크 */
+        .seed-icon-check::before {
+            width: 36px;
+            height: 36px;
+            border: 3.4px solid #98FFAB;
+            border-radius: 10px;
+            left: 10px;
+            top: 10px;
+        }
+
+        .seed-icon-check::after {
+            width: 21px;
+            height: 12px;
+            border-left: 4.5px solid #98FFAB;
+            border-bottom: 4.5px solid #98FFAB;
+            left: 18px;
+            top: 21px;
+            transform: rotate(-45deg);
+        }
+
+        .seed-mini-line {
+            width: 28px;
+            height: 2px;
+            border-radius: 999px;
+            background: rgba(152,255,171,0.92);
+            margin: 0 auto 14px;
         }
 
         .segment-ko,
@@ -755,23 +1218,44 @@ st.markdown(
             margin-bottom: 8px;
         }
 
+        .segment-ko {
+            text-align: center;
+        }
+
         .segment-en {
             color: #F08CFF;
             font-size: 13px;
             font-weight: 950;
-            margin-bottom: 20px;
+            margin-bottom: 0;
+            text-align: center;
         }
 
         .segment-purpose {
-            color: #FFF9FF;
-            font-size: 15px;
-            line-height: 1.65;
-            font-weight: 900;
+            color: rgba(255,255,255,0.82);
+            font-size: 14px;
+            line-height: 1.55;
+            font-weight: 760;
             padding: 12px 13px;
             margin-bottom: 20px;
             border-radius: 12px;
             background: rgba(240, 140, 255, 0.10);
             border: 1px solid rgba(240, 140, 255, 0.22);
+            min-height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            word-break: keep-all;
+        }
+
+        .purpose-key {
+            display: inline-block;
+            margin-top: 2px;
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 950;
+            letter-spacing: -0.2px;
+            text-shadow: 0 0 10px rgba(240, 140, 255, 0.22);
         }
 
         .field-label {
@@ -779,25 +1263,36 @@ st.markdown(
             font-size: 12px;
             font-weight: 950;
             letter-spacing: 0.2px;
-            margin-top: 14px;
+            margin-top: 12px;
             margin-bottom: 6px;
         }
 
-        .field-value,
-        .seed-desc {
+        .field-value {
             color: rgba(255,255,255,0.76);
             font-size: 14px;
+            line-height: 1.7;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            word-break: keep-all;
+            overflow-wrap: normal;
+        }
+
+        .seed-desc {
+            color: rgba(255,255,255,0.76);
+            font-size: 15px;
             line-height: 1.65;
             font-weight: 560;
+            letter-spacing: -0.02em;
             word-break: keep-all;
+            overflow-wrap: normal;
+            min-height: 50px;
         }
 
         .seed-title {
-            margin-bottom: 16px;
-        }
-
-        .seed-desc {
-            font-size: 15px;
+            font-size: 21px;
+            margin-bottom: 12px;
+            margin-top: 2px;
+            word-break: keep-all;
         }
 
         .empty-guide {
@@ -868,17 +1363,34 @@ with st.sidebar:
         """
     )
 
-    for page in ["대시보드 홈", "스타트레일", "스타시드"]:
+    NAV_ITEMS = {
+        "대시보드 홈": {
+            "label": "대시보드 홈",
+            "icon": ":material/dashboard:",
+        },
+        "스타트레일": {
+            "label": "스타트레일",
+            "icon": ":material/auto_awesome:",
+        },
+        "스타시드": {
+            "label": "스타시드",
+            "icon": ":material/search:",
+        },
+    }
+
+    for page, item in NAV_ITEMS.items():
         is_active = st.session_state.page == page
+
         if st.button(
-            page,
+            item["label"],
             key=f"nav_{page}",
             use_container_width=True,
             type="primary" if is_active else "secondary",
+            icon=item["icon"],
         ):
             st.session_state.page = page
             st.session_state.card = None
-
+            st.rerun()
 
 def render_planet_home():
     html(
@@ -909,52 +1421,53 @@ def render_mission_cards():
 
     with col1:
         html(
-            """
+            f"""
             <div class="mission-card trail-card">
-            <div class="card-head">
-            <div class="icon-box trail-icon-box">
-            <div class="css-star"></div>
-            </div>
-            <div>
-            <div class="card-title">스타트레일</div>
-            <div class="card-en trail-en">Star Trail</div>
-            </div>
-            </div>
-            <div class="card-desc">
-            기존 플랫폼에서 활동성과 팬덤이 확인된<br>
-            스트리머 영입 후보군을 발굴합니다.
-            </div>
+                <div class="card-head">
+                    <div class="icon-box trail-icon-box">
+                        {TRAIL_ICON_HTML}
+                    </div>
+                    <div>
+                        <div class="card-title">스타트레일</div>
+                        <div class="card-en trail-en">Star Trail</div>
+                    </div>
+                </div>
+
+                <div class="card-desc">
+                    기존 플랫폼에서 검증된 
+                    <span class="trail-point">성과와 팬덤</span>을 기반으로,<br>
+                    <span class="trail-point">CIME 영입 우선 후보군</span>을 탐색합니다.
+                </div>
             </div>
             """
         )
-        if st.button("스타트레일 설명 보기", key="btn_startrail", use_container_width=True):
+        if st.button("스타트레일 자세히 보기", key="btn_startrail", use_container_width=True):
             st.session_state.card = None if st.session_state.card == "trail" else "trail"
 
     with col2:
         html(
-            """
+            f"""
             <div class="mission-card seed-card">
-            <div class="card-head">
-            <div class="icon-box seed-icon-box">
-            <div class="css-seed">
-            <div class="leaf-left"></div>
-            <div class="leaf-right"></div>
-            <div class="seed-pot"></div>
-            </div>
-            </div>
-            <div>
-            <div class="card-title">스타시드</div>
-            <div class="card-en seed-en">Star Seed</div>
-            </div>
-            </div>
-            <div class="card-desc">
-            유튜브 기반 잠재 후보의 팬덤 반응과<br>
-            라이브 전환 가능성을 분석합니다.
-            </div>
+                <div class="card-head">
+                    <div class="icon-box seed-icon-box">
+                        {SEED_ICON_HTML}
+                    </div>
+                    <div>
+                        <div class="card-title">스타시드</div>
+                        <div class="card-en seed-en">Star Seed</div>
+                    </div>
+                </div>
+
+                <div class="card-desc">
+                    유튜브 기반 
+                    <span class="seed-point">성장 잠재력</span>과 
+                    <span class="seed-point">라이브 전환 가능성</span>을 분석해,<br>
+                    <span class="seed-point">차세대 후보군</span>을 발굴합니다.
+                </div>
             </div>
             """
         )
-        if st.button("스타시드 설명 보기", key="btn_starseed", use_container_width=True):
+        if st.button("스타시드 자세히 보기", key="btn_starseed", use_container_width=True):
             st.session_state.card = None if st.session_state.card == "seed" else "seed"
 
 
@@ -962,9 +1475,11 @@ def render_startrail_detail():
     cards = "".join(
         [
             f'<div class="segment-card">'
-            f'<div class="segment-num">{seg["num"]}</div>'
+            f'<div class="segment-head">'
+            f'<div class="segment-icon-badge {seg["icon_class"]}">{seg["icon"]}</div>'
             f'<div class="segment-ko">{seg["ko"]}</div>'
             f'<div class="segment-en">{seg["en"]}</div>'
+            f'</div>'
             f'<div class="segment-purpose">{seg["purpose"]}</div>'
             f'<div class="field-label">주요 판단 기준</div>'
             f'<div class="field-value">{seg["criteria"]}</div>'
@@ -978,12 +1493,12 @@ def render_startrail_detail():
     st.markdown(
         (
             '<div class="detail-box">'
-            '<div class="detail-kicker">PHASE 01 · STAR TRAIL</div>'
-            '<div class="detail-title">기존 플랫폼의 데이터 궤적을 따라 영입 후보군을 찾는 단계</div>'
+            f'<div class="detail-phase-head detail-phase-trail"><div class="detail-phase-icon">{TRAIL_ICON_HTML}</div><div class="detail-phase-title-row"><span class="detail-phase-ko">스타트레일</span><span class="detail-phase-en">Star Trail</span></div></div>'
+            '<div class="detail-title">기존 플랫폼 성과를 기준으로 CIME 영입 후보군을 선별하는 단계</div>'
             '<div class="detail-text">'
-            '스타트레일은 기존 플랫폼에서 이미 빛을 내고 있는 스트리머들의 데이터 흐름을 따라, '
-            'CIME로 유입 가능한 영입 후보군을 발굴하는 1단계 분석입니다. '
-            '단순 인지도만 보는 것이 아니라 유입력, 방송화력, 팬덤 결집력, 수익성, 플랫폼 적합성을 함께 검토합니다.'
+            '스타트레일은 <span class="trail-soft-point">기존 플랫폼에서 이미 활동 성과가 확인된 스트리머</span>를 분석합니다.<br>'
+            '대중성, 방송화력, 팬덤결집력, 수익성, 외부유입가능성을 함께 비교해<br>'
+            '<span class="trail-soft-point">CIME 영입 우선순위가 높은 후보군</span>을 찾습니다.'
             '</div>'
             f'<div class="segment-grid">{cards}</div>'
             '</div>'
@@ -996,30 +1511,30 @@ def render_starseed_detail():
     cards = "".join(
         [
             f'<div class="seed-step-card">'
-            f'<div class="seed-num">{step["num"]}</div>'
-            f'<div class="seed-title">{step["title"]}</div>'
+            f'<div class="seed-icon-orbit"><div class="seed-icon-badge seed-icon-{step["icon"]}"></div></div>'
+                        f'<div class="seed-title">{step["title"]}</div>'
+            f'<div class="seed-mini-line"></div>'
             f'<div class="seed-desc">{step["desc"]}</div>'
             f'</div>'
-            for step in STARSEED_STEPS
+            for step in STAR_SEED_CARDS
         ]
     )
 
     st.markdown(
         (
             '<div class="detail-box">'
-            '<div class="detail-kicker">PHASE 02 · STAR SEED</div>'
-            '<div class="detail-title">유튜브 기반 잠재 후보를 발굴해 라이브 전환 가능성을 보는 단계</div>'
+            f'<div class="detail-phase-head detail-phase-seed"><div class="detail-phase-icon">{SEED_ICON_HTML}</div><div class="detail-phase-title-row"><span class="detail-phase-ko">스타시드</span><span class="detail-phase-en">Star Seed</span></div></div>'
+            '<div class="detail-title">유튜브에서 CIME가 실제로 검토할 후보를 찾는 단계</div>'
             '<div class="detail-text">'
-            '스타시드는 유튜브에서 활동 중인 크리에이터 중 CIME에서 라이브 스트리머로 성장할 가능성이 있는 '
-            '잠재 후보를 발굴하는 2단계 분석입니다. 팬덤 반응, 성장성, 라이브 전환 가능성, 영입 실전성을 함께 검토해 '
-            '실제 검토 가능한 후보 리스트를 만듭니다.'
+            '스타시드는 <span class="seed-soft-point">유튜브에서 활동 중인 크리에이터</span> 중 단순 인기 채널이 아니라 실제 영입 검토가 가능한 후보를 분석합니다.<br>'
+            '팬 반응 밀도, 라이브 전환성, 실전 리스크, 액션버킷을 함께 확인해<br>'
+            '<span class="seed-soft-point">CIME가 우선 검토할 예비 스트리머 후보군</span>을 정리합니다.'
             '</div>'
             f'<div class="seed-grid">{cards}</div>'
             '</div>'
         ),
         unsafe_allow_html=True,
     )
-
 
 if st.session_state.page == "대시보드 홈":
     render_planet_home()
