@@ -6,6 +6,8 @@
 1.본인 이니셜 폴더로 data 하위 폴더를 만들고 그 아래에 input, logs, processed, raw 폴더를 만든다
 2.main.py를 본인 이니셜 폴더로 복사한 뒤 bash에 아래 명령어를 친다(본인 이니셜로 rename)
 uv run python notebooks/LSB/main.py all
+uv run python notebooks/LSB/main.py download (중간 끊긴 경우 이어서 진행 가능)
+uv run python notebooks/LSB/main.py collect (랭킹 페이지만 수집)
 3.PROFIT!
 
 [실행 흐름]
@@ -71,13 +73,13 @@ for d in [INPUT_DIR, RAW_DIR, LOG_DIR]:
 MEMBER_TAG = "LSB"                 # 조원 태그 (파일명에 사용)
 
 # --- Google 로그인 계정 ---
-GOOGLE_EMAIL = "sibchiljo9@gmail.com"
-GOOGLE_PASSWORD = "Mnc-711!"
+GOOGLE_EMAIL = "your@gmail.com"
+GOOGLE_PASSWORD = "your_password"
 SESSION_FILE = BASE_DIR / "session.json"   # 로그인 세션 저장 파일
 
 # --- 랭킹 수집 범위 ---
-START_PAGE = 11                    # 수집 시작 페이지 (조별 분담)
-END_PAGE = 12                      # 수집 종료 페이지
+START_PAGE = 16                    # 수집 시작 페이지 (조별 분담)
+END_PAGE = 30                      # 수집 종료 페이지
 
 # --- 통계 다운로드 기간 (UTC, URL 인코딩) ---
 # 한국시간 2025-01-01 00:00:00 ~ 2026-03-31 23:59:59
